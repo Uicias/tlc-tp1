@@ -1,0 +1,27 @@
+version: '3'
+services:
+  proxy:
+    image: nginxproxy/nginx-proxy
+    container_name: proxy
+    ports:
+      - 8080:80
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    extra_hosts:
+      - "m:127.0.0.1"
+
+  nginx1:
+    image: nginx:latest
+    container_name: nginx1
+    environment:
+      - VIRTUAL_HOST=m
+  nginx2:
+    image: nginx:latest
+    container_name: nginx2
+    environment:
+      - VIRTUAL_HOST=m
+  nginx3:
+    image: nginx:latest
+    container_name: nginx3
+    environment:
+      - VIRTUAL_HOST=m
