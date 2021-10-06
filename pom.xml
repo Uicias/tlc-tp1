@@ -68,6 +68,8 @@
 			<artifactId>opencv</artifactId>
 			<version>3.4.10</version>
 			<type>jar</type>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/opencv-3410.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.jersey.inject</groupId>
@@ -167,6 +169,14 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>8</source>
+					<target>8</target>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
