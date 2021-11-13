@@ -69,7 +69,7 @@
 			<version>3.4.10</version>
 			<type>jar</type>
 			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/opencv-3410.jar</systemPath>
+			<systemPath>${project.basedir}/lib/opencv_java3410.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.jersey.inject</groupId>
