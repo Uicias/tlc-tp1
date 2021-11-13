@@ -3,7 +3,7 @@ package main;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
+import java.io.IOException; 
 import java.io.InputStream;
 import java.net.URL;
 
@@ -25,7 +25,7 @@ public class Main {
     private static final String OPENCV_HAARCASCADES_HOME = "./haarcascades/";
 
 
-
+    
     static {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
     }
@@ -36,22 +36,22 @@ public class Main {
 		 Server server = new Server(8080);
 
 		    WebAppContext root = new WebAppContext();
-        root.setContextPath("/");
-        root.setDescriptor("src/main/webapp/WEB-INF/web.xml");
-        URL webAppDir = Thread.currentThread().getContextClassLoader().getResource("webapp");
-        if (webAppDir == null) {
-            throw new RuntimeException("No webapp directory was found into the JAR file");
-        }
-        root.setResourceBase(webAppDir.toURI().toString());
-        root.setParentLoaderPriority(true);
+		    root.setContextPath("/");
+		    root.setDescriptor("src/main/webapp/WEB-INF/web.xml");
+		    URL webAppDir = Thread.currentThread().getContextClassLoader().getResource("webapp");
+		    if (webAppDir == null) {
+		        throw new RuntimeException("No webapp directory was found into the JAR file");
+		    }
+		    root.setResourceBase(webAppDir.toURI().toString());
+		    root.setParentLoaderPriority(true);
 
-        server.setHandler(root);
-        server.start();
+		    server.setHandler(root);
+		    server.start();	
+		
 
-
-    }
-
-    public static BufferedImage drawNewImage(Mat original)  {
+	}
+	
+	public static BufferedImage drawNewImage(Mat original)  {
         Rect[] faces = faceDetect(original);
         BufferedImage detectedImage = toBufferedImage(original);
 
@@ -69,9 +69,9 @@ public class Main {
 
        	return detectedImage;
 			// ImageIO.write(detectedImage, "JPEG", new File("/tmp/test.jpg"));
-
-    }
-
+		
+	}
+	
     protected static BufferedImage loadImage(String file) {
         try {
         	InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(file);
