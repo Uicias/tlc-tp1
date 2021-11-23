@@ -3,7 +3,7 @@ package main;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
-import java.io.IOException; 
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
@@ -25,11 +25,11 @@ public class Main {
     private static final String OPENCV_HAARCASCADES_HOME = "./haarcascades/";
 
 
-    
-    static {
-        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-    }
 	public static void main(String[] args) throws Exception {
+
+        System.out.println("library: " + Core.NATIVE_LIBRARY_NAME);
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+
 		//Mat original = Imgcodecs.imread("/home/barais/Images/PhotosLancieux/IMG_4514.JPG");
 
 //		drawNewImage(original);
@@ -46,11 +46,11 @@ public class Main {
 		    root.setParentLoaderPriority(true);
 
 		    server.setHandler(root);
-		    server.start();	
-		
+		    server.start();
+
 
 	}
-	
+
 	public static BufferedImage drawNewImage(Mat original)  {
         Rect[] faces = faceDetect(original);
         BufferedImage detectedImage = toBufferedImage(original);
@@ -69,9 +69,9 @@ public class Main {
 
        	return detectedImage;
 			// ImageIO.write(detectedImage, "JPEG", new File("/tmp/test.jpg"));
-		
+
 	}
-	
+
     protected static BufferedImage loadImage(String file) {
         try {
         	InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(file);
